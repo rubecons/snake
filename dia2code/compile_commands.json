@@ -1,0 +1,47 @@
+[
+{
+  "directory": "/home/ruben/Documents/Projets/snake/dia2code",
+  "command": "/usr/bin/gcc   -I/usr/include/libxml2  -g3 -gdwarf-2   -o CMakeFiles/dia2code.dir/src/comment_helper.c.o   -c /home/ruben/Documents/Projets/snake/dia2code/src/comment_helper.c",
+  "file": "/home/ruben/Documents/Projets/snake/dia2code/src/comment_helper.c"
+},
+{
+  "directory": "/home/ruben/Documents/Projets/snake/dia2code",
+  "command": "/usr/bin/gcc   -I/usr/include/libxml2  -g3 -gdwarf-2   -o CMakeFiles/dia2code.dir/src/decls.c.o   -c /home/ruben/Documents/Projets/snake/dia2code/src/decls.c",
+  "file": "/home/ruben/Documents/Projets/snake/dia2code/src/decls.c"
+},
+{
+  "directory": "/home/ruben/Documents/Projets/snake/dia2code",
+  "command": "/usr/bin/gcc   -I/usr/include/libxml2  -g3 -gdwarf-2   -o CMakeFiles/dia2code.dir/src/dia2code.c.o   -c /home/ruben/Documents/Projets/snake/dia2code/src/dia2code.c",
+  "file": "/home/ruben/Documents/Projets/snake/dia2code/src/dia2code.c"
+},
+{
+  "directory": "/home/ruben/Documents/Projets/snake/dia2code",
+  "command": "/usr/bin/gcc   -I/usr/include/libxml2  -g3 -gdwarf-2   -o CMakeFiles/dia2code.dir/src/generate_code_cpp.c.o   -c /home/ruben/Documents/Projets/snake/dia2code/src/generate_code_cpp.c",
+  "file": "/home/ruben/Documents/Projets/snake/dia2code/src/generate_code_cpp.c"
+},
+{
+  "directory": "/home/ruben/Documents/Projets/snake/dia2code",
+  "command": "/usr/bin/gcc   -I/usr/include/libxml2  -g3 -gdwarf-2   -o CMakeFiles/dia2code.dir/src/includes.c.o   -c /home/ruben/Documents/Projets/snake/dia2code/src/includes.c",
+  "file": "/home/ruben/Documents/Projets/snake/dia2code/src/includes.c"
+},
+{
+  "directory": "/home/ruben/Documents/Projets/snake/dia2code",
+  "command": "/usr/bin/gcc   -I/usr/include/libxml2  -g3 -gdwarf-2   -o CMakeFiles/dia2code.dir/src/main.c.o   -c /home/ruben/Documents/Projets/snake/dia2code/src/main.c",
+  "file": "/home/ruben/Documents/Projets/snake/dia2code/src/main.c"
+},
+{
+  "directory": "/home/ruben/Documents/Projets/snake/dia2code",
+  "command": "/usr/bin/gcc   -I/usr/include/libxml2  -g3 -gdwarf-2   -o CMakeFiles/dia2code.dir/src/parse_diagram.c.o   -c /home/ruben/Documents/Projets/snake/dia2code/src/parse_diagram.c",
+  "file": "/home/ruben/Documents/Projets/snake/dia2code/src/parse_diagram.c"
+},
+{
+  "directory": "/home/ruben/Documents/Projets/snake/dia2code",
+  "command": "/usr/bin/gcc   -I/usr/include/libxml2  -g3 -gdwarf-2   -o CMakeFiles/dia2code.dir/src/scan_tree.c.o   -c /home/ruben/Documents/Projets/snake/dia2code/src/scan_tree.c",
+  "file": "/home/ruben/Documents/Projets/snake/dia2code/src/scan_tree.c"
+},
+{
+  "directory": "/home/ruben/Documents/Projets/snake/dia2code",
+  "command": "/usr/bin/gcc   -I/usr/include/libxml2  -g3 -gdwarf-2   -o CMakeFiles/dia2code.dir/src/source_parser.c.o   -c /home/ruben/Documents/Projets/snake/dia2code/src/source_parser.c",
+  "file": "/home/ruben/Documents/Projets/snake/dia2code/src/source_parser.c"
+}
+]
