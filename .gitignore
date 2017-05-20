@@ -3,7 +3,7 @@ build
 bin
 nbproject
 CMakeFiles
-src/*.h
-src/etats/*.h
-src/moteur/*.h
-src/rendu/*.h
+#src/*.h
+#src/etats/*.h
+#src/moteur/*.h
+#src/rendu/*.h

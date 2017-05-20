@@ -15,6 +15,9 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "etats/Partie.h"
+#include "rendu/Rendu.h"
+#include "rendu/TileMap.h"
+#include "moteur/Moteur.h"
 
 #define DEBUG
 
@@ -30,24 +33,35 @@ int main(int argc, char** argv) {
     
     etats::Partie partie;
     partie.nouvellePartie(1);
- 
-   sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
-
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
+    
+    moteur::Moteur moteur;
+    moteur.init(&partie);
+    
+    
+    partie.moteur=&moteur;
+    
+    rendu::Rendu rendu;
+    rendu.init(&partie);//(&moteur);
+    
+    partie.rendu=&rendu;
+    
+//   sf::RenderWindow window(sf::VideoMode(500, 500), "SnAkE");
+//    sf::CircleShape shape(100.f);
+//    shape.setFillColor(sf::Color::Green);
+//
+//    while (window.isOpen())
+//    {
+//        sf::Event event;
+//        while (window.pollEvent(event))
+//        {
+//            if (event.type == sf::Event::Closed)
+//                window.close();
+//        }
+//
+//        window.clear();
+//        window.draw(shape);
+//        window.display();
+//    }
 
     
     return 0;
