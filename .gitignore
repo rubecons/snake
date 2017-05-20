@@ -3,6 +3,7 @@ build
 bin
 nbproject
 CMakeFiles
+src/*.dia
 #src/*.h
 #src/etats/*.h
 #src/moteur/*.h
