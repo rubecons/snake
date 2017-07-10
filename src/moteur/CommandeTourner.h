@@ -28,13 +28,12 @@ namespace moteur
 class CommandeTourner : public Commande {
 public:
     CommandeTourner();
-    CommandeTourner(etats::Partie* part, etats::Direction dir);
+    CommandeTourner(etats::Direction dir);
     CommandeTourner(const CommandeTourner& orig);
     virtual ~CommandeTourner();
     void effectuerCommande();
 private:
     etats::Direction direction;
-    etats::Partie* partie;
 };
 }
 #endif /* COMMANDETOURNER_H */

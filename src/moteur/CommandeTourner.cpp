@@ -12,17 +12,17 @@
  */
 
 #include "CommandeTourner.h"
-//#include "etats/Partie.h"
+
 #include "etats/Serpent.h"
-//#include "etats/Serpent.h"
+#include <iostream>
+
 namespace moteur
 {
 CommandeTourner::CommandeTourner() {
 }
 
-CommandeTourner::CommandeTourner(etats::Partie* part, etats::Direction dir)
+CommandeTourner::CommandeTourner(etats::Direction dir)
 {
-    partie=part;
     direction=dir;
 }
 
@@ -34,7 +34,7 @@ CommandeTourner::~CommandeTourner() {
 
 void CommandeTourner::effectuerCommande()
 {
-    partie->serpent->tourner(direction);
+    etats::Partie::instance().serpent->tourner(direction);
     
 }
 

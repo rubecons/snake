@@ -13,18 +13,17 @@ namespace etats {
 
 namespace etats {
 
-  /// class Terrain - 
-  class Terrain : public etats::Element {
-    // Associations
-  public :
-    etats::MurType murType;
-    etats::TerrainType terrainType;
-    // Operations
-  public:
-    Terrain ();
-    ~Terrain ();
-    Terrain (int i, int j, Direction orientation, TerrainType terrainT, MurType murT);
-  };
+class Terrain : public etats::Element {
+
+public :
+  etats::MurType murType;
+  etats::TerrainType terrainType;
+
+public:
+  Terrain ();
+  ~Terrain ();
+  Terrain (int i, int j, Direction orientation, TerrainType terrainT, MurType murT);
+};
 
 };
 

@@ -5,14 +5,14 @@
  */
 
 #include "ElementFactory.h"
-
+#include <iostream>
 
 
 namespace etats
 {
     
 
-ElementFactory::ElementFactory ()
+ElementFactory::ElementFactory () : nombreEspace(0)
 {}
 
 ElementFactory::~ElementFactory ()
@@ -37,8 +37,8 @@ Terrain* const ElementFactory::newInstance (char c, size_t i, size_t j)
             elt= new Terrain(i, j, Direction::NORD,TerrainType::MUR, MurType::DROIT );
             break;
         case 's':
-            //elt= new Serpent(i, j, Direction::EST);
             elt= new Terrain(i, j, Direction::NON,TerrainType::ESPACE, MurType::NONE );
+            nombreEspace++;
             break;
         case 'b':
             elt= new Terrain(i, j, Direction::OUEST,TerrainType::MUR, MurType::COIN );
@@ -51,6 +51,10 @@ Terrain* const ElementFactory::newInstance (char c, size_t i, size_t j)
             break;
         case ' ':
             elt= new Terrain(i, j, Direction::NON,TerrainType::ESPACE, MurType::NONE );
+            nombreEspace++;
+            break;
+        case 'v' :
+            elt = new Terrain(i, j, Direction::NON,TerrainType::VIDE, MurType::NONE );
             break;
         default :
             elt= new Terrain(i, j, Direction::NON,TerrainType::ESPACE, MurType::NONE );

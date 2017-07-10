@@ -14,15 +14,16 @@ namespace etats {
 
 namespace etats {
 
-  /// class ElementFactory - 
-  class ElementFactory {
-    // Associations
-    // Operations
-  public:
-    ElementFactory ();
-    ~ElementFactory ();
-    Terrain * const newInstance (char c, size_t i, size_t j);
-  };
+
+class ElementFactory {
+
+
+public:
+    int nombreEspace;
+  ElementFactory ();
+  ~ElementFactory ();
+  Terrain * const newInstance (char c, size_t i, size_t j);
+};
 
 };
 

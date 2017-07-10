@@ -11,17 +11,17 @@ namespace etats {
 
 namespace etats {
 
-  /// class ElementCorps - 
-  class ElementCorps : public etats::Element {
-    // Attributes
-  public:
-    bool visible;
-    // Operations
-  public:
-    ElementCorps ();
-    ~ElementCorps ();
-    ElementCorps (int i, int j, Direction orientation, bool visi);
-  };
+
+class ElementCorps : public etats::Element {
+
+public:
+  bool visible;
+
+public:
+  ElementCorps ();
+  ~ElementCorps ();
+  ElementCorps (int i, int j, Direction orientation, bool visi);
+};
 
 };
 

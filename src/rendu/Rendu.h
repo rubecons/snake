@@ -4,45 +4,43 @@
 
 //#include "Couche.h"
 #include <vector>
-#include <SFML/Graphics.hpp>
-
-
+//#include <SFML/Graphics.hpp>
+#include "etats/Partie.h"
+#include "TileMap.h"
+#include "PageAccueil.h"
 
 namespace etats {
   class Partie;
-}
-
-namespace rendu
-{
-    class TileMap;
-}
-
-
-#include "etats/Partie.h"
-#include "TileMap.h"
+};
 
 
 namespace rendu {
+ 
+class Rendu {
 
-  /// class Rendu - 
-  class Rendu {
-    // Attributes
-  public:
-    sf::RenderWindow *wind;
-    etats::Partie * partie;
-    moteur::Moteur * moteur;
-    //std::vector<Couche> couchesTerrain;
-    TileMap *map;
-    unsigned int winX, winY;
-    int H, L, tailleCote;
-    
-    // Operations
-  public:
-    Rendu();
-    ~Rendu();
-    void init (etats::Partie* part);
-    void update();
-  };
+public:
+  sf::RenderWindow *wind;
+  sf::View vue;
+  rendu::TileMap map;
+  unsigned int winX, winY;
+  int H, L, tailleCote;
+  bool accueil;
+  std::string nom2;
+  sf::Text meilleursScores;
+  rendu::PageAccueil pageAccueil;
+
+
+public:
+  Rendu();
+  ~Rendu();
+  static Rendu & instance();
+  void init ();
+  void afficherPageAccueil();
+  void update();
+  void lancerHorloge();
+  void threadCallerHorloge();
+  void actualiserScores();
+};
 
 };
 

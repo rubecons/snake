@@ -6,20 +6,19 @@
 
 namespace etats {
 
-  /// class Element - 
-  class Element {
-    // Associations
-    // Attributes
-  public:
-    int i;
-    int j;
-    Direction orientation;
-    // Operations
-  public:
-    Element ();
-    Element (int i, int j, Direction orientation);
-    ~Element ();
-  };
+ 
+class Element {
+
+public:
+  int i;
+  int j;
+  Direction orientation;
+  // Operations
+public:
+  Element ();
+  Element (int i, int j, Direction orientation);
+  ~Element ();
+};
 
 };
 

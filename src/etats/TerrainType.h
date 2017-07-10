@@ -6,8 +6,9 @@ namespace etats {
 
   enum TerrainType {
     ESPACE     = 0,
-    MUR     = 1,
-    FRUIT     = 2
+    MUR        = 1,
+    FRUIT      = 2,
+    VIDE       = 3
   };
 
 };

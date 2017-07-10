@@ -22,26 +22,24 @@ namespace etats{
 #include <list>
 #include <mutex>
 #include "etats/Partie.h"
-//#include "SFML/System/"
 
 namespace moteur
 {
 class Moteur {
 public:
     Moteur();
-    void init(etats::Partie* part);
+    static Moteur & instance();
+    void init();
     Moteur(const Moteur& orig);
-    Moteur* instance();
     virtual ~Moteur();
     void ajouterCommande(Commande* com);
     void execCommande();
-    etats::Partie* partie;
-    bool moteurEnabled;
-    
-private:
+    void threadCaller();
+    void clearCommandes();
     std::list<Commande*> mesCommandes;
+private:
+    
     std::mutex mutexMoteur;
-    static Moteur* pMoteur;
     
 };
 }

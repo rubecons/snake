@@ -16,25 +16,26 @@ namespace etats {
 
 namespace etats {
 
-  /// class Serpent - 
-  class Serpent : public etats::Element {
-    // Associations
-    // Attributes
-  public:
-    std::vector<ElementCorps *> corps;
-    int vitesse;
-    Partie* partie;
-    // Operations
-  public:
-    Serpent ();
-    Serpent (int i, int j, Direction orientation, int vitesse, Partie* part);
-    ~Serpent ();
-    void avancer ();
-    void tourner (Direction dir);
-    bool isSerpent(int i, int j, bool serpentSansTete);
-    void grandir();
-    void placerQueue();
-  };
+ 
+class Serpent : public etats::Element {
+
+public:
+  std::vector<ElementCorps *> corps;
+  int vitesse;
+
+  int tailleCorps;
+  int i, j;
+
+public:
+  Serpent ();
+  Serpent (int i, int j, Direction orientation, int vitesse);
+  ~Serpent ();
+  void avancer ();
+  void tourner (Direction dir);
+  bool isSerpent(int i, int j, bool serpentSansTete);
+  void grandir();
+  void placerQueue();
+};
 
 };
 

@@ -14,11 +14,10 @@ namespace etats
 Serpent::Serpent ()
 {}
 
-Serpent::Serpent (int i, int j, Direction orientation, int vitesse, Partie* part) : Element(i, j,orientation)
-{
+Serpent::Serpent (int i, int j, Direction orientation, int vitesse) : Element(i, j,orientation)
+{ this->i=i; this->j=j;
     this->vitesse=vitesse;
-    partie=part;
-    //std::cout<<"serpent"<<i<<"  "<<j<<"  orientation"<< orientation<<"  vitesse "<<vitesse<<std::endl;
+    tailleCorps=0;
 }
 
 Serpent::~Serpent ()
@@ -27,10 +26,9 @@ Serpent::~Serpent ()
 void Serpent::avancer ()
 {
     int iBuffer=corps.front()->i, jBuffer=corps.front()->j, iBuf, jBuf;
-    //bool visibleBuffer=;
     Direction orientationBuffer=corps.front()->orientation, orientationBuf;
     
-    switch(orientation)
+    switch(orientationBuffer)
     {
         case Direction::EST : corps.front()->j++;
             break;
@@ -45,7 +43,7 @@ void Serpent::avancer ()
     }
 
     
-    for(size_t m=1 ; m<corps.size(); m++)
+    for(int m=1 ; m<tailleCorps; m++)
     {
         iBuf=corps[m]->i, jBuf=corps[m]->j; orientationBuf=corps[m]->orientation;
         corps[m]->i=iBuffer;
@@ -55,30 +53,32 @@ void Serpent::avancer ()
      iBuffer=iBuf;jBuffer=jBuf;orientationBuffer=orientationBuf;   
     }
     
-    if(corps.front()->i==partie->fruit[0] && corps.front()->j==partie->fruit[1])
+    if(corps.front()->i==etats::Partie::instance().fruit[0] && corps.front()->j==etats::Partie::instance().fruit[1])
     {
+
         grandir();
-        partie->placerFruit();
+        etats::Partie::instance().placerFruit();
     }
-    else if(partie->terrain[corps.front()->j + (corps.front()->i * partie->largeur)]->terrainType==TerrainType::MUR || isSerpent(corps.front()->i, corps.front()->j, true))
+    else if(etats::Partie::instance().terrain[corps.front()->j + (corps.front()->i * etats::Partie::instance().largeur)]->terrainType==TerrainType::MUR || isSerpent(corps.front()->i, corps.front()->j, true))
     {
-        partie->finPartie(FinPartie::GAMEOVER);
+        
+        etats::Partie::instance().finPartie(FinPartie::GAMEOVER);
     }
 }
 
 void Serpent::tourner (Direction dir)
 {
-    if((orientation==Direction::EST && dir!=Direction::OUEST) || (orientation==Direction::NORD && dir!=Direction::SUD) || (orientation==Direction::SUD && dir!=Direction::NORD) || (orientation==Direction::OUEST && dir!=Direction::EST))
+    if((corps.front()->orientation==Direction::EST && dir!=Direction::OUEST) || (corps.front()->orientation==Direction::NORD && dir!=Direction::SUD) || (corps.front()->orientation==Direction::SUD && dir!=Direction::NORD) || (corps.front()->orientation==Direction::OUEST && dir!=Direction::EST))
     {
-        orientation=dir;
+        corps.front()->orientation=dir;
     }
 }
 
 bool Serpent::isSerpent(int i, int j, bool serpentSansTete) //permet de savoir si des coordonnées sont dans le serpent ou pas
 {
-    for(size_t k=serpentSansTete; k< corps.size(); k++)
+    for(int k=serpentSansTete; k< tailleCorps-1; k++)
     {
-        if(corps[k]->i==i && corps[k]->j==j)
+        if(corps[k]->i==i && corps[k]->j==j && corps[k]->visible)
         {
             return true;
         }
@@ -88,16 +88,18 @@ bool Serpent::isSerpent(int i, int j, bool serpentSansTete) //permet de savoir s
     
 void Serpent::grandir()
 {
-    corps.back()->visible=true;
-    
+    corps[tailleCorps-1]->visible=true;
+    etats::Partie::instance().points++;
     placerQueue();
 }
 
 void Serpent::placerQueue()
-{
-    Direction orientation = corps.back()->orientation;
-        int i2 = corps.back()->i;
-        int j2 = corps.back()->j;
+{   if(tailleCorps==(int)corps.size())etats::Partie::instance().finPartie(FinPartie::VICTOIRE);
+    
+    
+    Direction orientation = corps[tailleCorps-1]->orientation;
+        int i2 = corps[tailleCorps-1]->i;
+        int j2 = corps[tailleCorps-1]->j;
         switch(orientation)
         {
             case Direction::EST:
@@ -120,7 +122,7 @@ void Serpent::placerQueue()
         }
 
         ElementCorps* fin = new ElementCorps(i2, j2, orientation, false);
-        corps.push_back(fin);
+        corps[tailleCorps++]=fin;
 }
 
 }

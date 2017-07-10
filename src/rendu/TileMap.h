@@ -23,9 +23,8 @@
 #include <SFML/Graphics.hpp>
 #include <array>
 #include <string>
-//#include "../etats.h"
 #include "etats/Partie.h"
-
+#include <iostream>
 namespace etats
 {
     class Terrain;
@@ -37,19 +36,23 @@ namespace rendu
 {
 
 class TileMap : public sf::Drawable, public sf::Transformable{
+
 public:
     TileMap();
     TileMap(const TileMap& orig);
     virtual ~TileMap();
-    bool load(const std::string& tileset, sf::Vector2u tileSize, etats::Partie* partie, unsigned int width, unsigned int height);
+    bool init(sf::RenderWindow *wind, unsigned int width, unsigned int height);
+    void majTerrain();
+    bool load(sf::Vector2u tileSize, unsigned int width, unsigned int height);
+
 private:
+    
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
     
-    sf::VertexArray tableauVertex;
+    sf::VertexArray tableauTerrain, tableauVertex;
     sf::Texture imageTexture;
-    //sf::Color couleurs[5];
-    //std::array<sf::Color, 5> couleurs ;
-     std::array<sf::Color, 5> couleurs = {sf::Color::Yellow, sf::Color::Blue, sf::Color::Red, sf::Color::Green};
+    bool isTexture;
+    std::array<sf::Color, 5> couleurs = {sf::Color::Yellow, sf::Color::Blue, sf::Color::Red, sf::Color::Black,sf::Color::Green};
 };
 
 };

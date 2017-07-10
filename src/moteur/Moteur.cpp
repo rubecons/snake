@@ -11,35 +11,40 @@
  * Created on 19 mai 2017, 00:48
  */
 
+#include <thread>
+#include <iostream>
 #include "Moteur.h"
 namespace moteur
 {
-    Moteur* Moteur::pMoteur=nullptr;
 
 Moteur::Moteur() {
 }
 
-void Moteur::init(etats::Partie* part)
+Moteur& Moteur::instance() {
+    static Moteur moteur;
+    return moteur;
+}
+
+
+void Moteur::init()
 {
-    partie=part;
-    moteurEnabled=true;
+    mesCommandes.clear();
 }
 
 Moteur::Moteur(const Moteur& orig) {
 }
 
-Moteur* Moteur::instance()
-{
-    if( !pMoteur) pMoteur=new Moteur;
-    return pMoteur;
+Moteur::~Moteur() {
 }
 
-Moteur::~Moteur() {
+void Moteur::clearCommandes()
+{
+    mesCommandes.clear();
 }
 
 void Moteur::ajouterCommande(Commande* com)
 {
-    if(moteurEnabled)
+    if(etats::Partie::instance().play)
     {
         mutexMoteur.lock();
         mesCommandes.push_back(com);
@@ -49,17 +54,22 @@ void Moteur::ajouterCommande(Commande* com)
 
 void Moteur::execCommande()
 {
-    while(1)
-    {
-        if(moteurEnabled){
-        while(!mesCommandes.empty())
+
+    if(etats::Partie::instance().play==true){
+        if(mesCommandes.empty()==false)
         {
             mutexMoteur.lock();
             mesCommandes.front()->effectuerCommande();
             mesCommandes.pop_front();
             mutexMoteur.unlock();
-        }}
+        }
     }
+}
+
+void Moteur::threadCaller()
+{
+    std::thread threadMoteur(&Moteur::execCommande, this);
+    threadMoteur.detach();
 }
 
 }

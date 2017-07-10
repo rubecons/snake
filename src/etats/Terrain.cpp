@@ -17,10 +17,8 @@ Terrain::~Terrain ()
 
 Terrain::Terrain (int i, int j, Direction orientation, TerrainType terrainT, MurType murT) : Element(i,j,orientation)
 {
-    
     this->murType=murT;
     this->terrainType=terrainT;
-    //std::cout<<"instance of "<<terrainType<< " , "<<murType<<"in " <<i <<"   "<<j<<std::endl;
 }
 
 }
